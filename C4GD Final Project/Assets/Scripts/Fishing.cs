@@ -9,8 +9,8 @@ public class Fishing : MonoBehaviour
     //after a bit, you get a fish (maybe pull from an array?)
 
     public string[] FishTypes = {"Tuna", "Salmon", "Mackerel", "Shark"};
+    public int[] EnduranceLevels = {1, 2, 3, 5};
     bool canFish = true;
-    public bool inWater = false;
     float fishRate = 3;
     float canFishTimer = 3;
 
@@ -29,8 +29,15 @@ public class Fishing : MonoBehaviour
             canFishTimer = fishRate;
             canFish = true;
         }
-        if (Input.GetKeyDown(KeyCode.E) && canFish && inWater){
-            print("You fished a " + FishTypes[Random.Range(0, FishTypes.Length)] + "!");
+        if (Input.GetKeyDown(KeyCode.E) && canFish){
+            int fishingPower = Random.Range(0, 6);
+            int chosenFish = Random.Range(0, FishTypes.Length);
+
+            if (fishingPower >= EnduranceLevels[chosenFish]){
+                print("You fished a " + FishTypes[chosenFish] + "!");
+            } else {
+                print("The fish got away...");
+            }
             canFish = false;
         }
     }
