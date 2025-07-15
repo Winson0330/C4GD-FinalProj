@@ -7,6 +7,8 @@ public class ChangeScene : MonoBehaviour
     public GameObject changeScenePrompt;
 
     private void OnTriggerEnter2D(Collider2D player){
-        changeScenePrompt.SetActive(true);
+        if (player.gameObject.CompareTag("Player")){
+            changeScenePrompt.SetActive(true);
+        }
     }
 }
