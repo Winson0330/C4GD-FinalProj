@@ -36,7 +36,7 @@ public class Fishing : MonoBehaviour
             if (fishingPower >= EnduranceLevels[chosenFish]){
                 resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
             } else {
-                resultText.text = "The fish got away...";
+                resultText.text = "The " + FishTypes[chosenFish] + " got away...";
             }
             canFish = false;
         }
