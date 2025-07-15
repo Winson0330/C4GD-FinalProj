@@ -29,12 +29,13 @@ public class Fishing : MonoBehaviour
             resultText.text = "";
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && inFishSpot && canFish){
+        if (Input.GetKeyDown(KeyCode.F) && inFishSpot && canFish){
             int fishingPower = Random.Range(0, 6);
             int chosenFish = Random.Range(0, FishTypes.Length);
 
             if (fishingPower >= EnduranceLevels[chosenFish]){
                 resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
+                PlayerController.instance.inventory.Add(FishTypes[chosenFish]);
             } else {
                 resultText.text = "The " + FishTypes[chosenFish] + " got away...";
             }
