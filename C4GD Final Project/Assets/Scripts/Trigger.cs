@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -19,7 +21,8 @@ public class Trigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("collision");
+            //write code that opens the prompt
+            //
         }
     }
 
