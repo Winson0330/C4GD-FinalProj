@@ -5,21 +5,30 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D body;
+    public static PlayerController instance;
     public float moveSpeed = 10;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool onIsland;
 
+    void Start(){
+        instance = this;
+    }
+    
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        if (onIsland){
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = Input.GetAxisRaw("Vertical");
 
-        Vector2 inputDir = new Vector2(horizontalInput, verticalInput).normalized;
+            Vector2 inputDir = new Vector2(horizontalInput, verticalInput).normalized;
 
-        body.velocity = inputDir * moveSpeed;
+            body.velocity = inputDir * moveSpeed;
+        } else {
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+            Vector2 inputDir = new Vector2(horizontalInput, 0);
+
+            body.velocity = inputDir * moveSpeed;
+        }
     }
 }

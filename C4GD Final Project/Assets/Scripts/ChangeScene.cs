@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dock : MonoBehaviour
+public class ChangeScene : MonoBehaviour
 {
-    public GameObject enterOceanPrompt;
+    public GameObject changeScenePrompt;
 
     private void OnTriggerEnter2D(Collider2D player){
-        enterOceanPrompt.SetActive(true);
+        changeScenePrompt.SetActive(true);
     }
 }

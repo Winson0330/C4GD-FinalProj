@@ -4,41 +4,49 @@ using UnityEngine;
 
 public class Fishing : MonoBehaviour
 {
-    //rudimentary fishing system
-    //press a key (e?) to fish
-    //after a bit, you get a fish (maybe pull from an array?)
-
+    public TMPro.TMP_Text resultText;
     public string[] FishTypes = {"Tuna", "Salmon", "Mackerel", "Shark"};
     public int[] EnduranceLevels = {1, 2, 3, 5};
     bool canFish = true;
-    float fishRate = 3;
-    float canFishTimer = 3;
+    bool inFishSpot = false;
+    float fishRate = 5; //these two are for how fast the player can fish
+    float canFishTimer = 5;
+    float stayOnScreen = 3; //these two are for how long the result stays on screen
+    float displayTimer = 3;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (canFishTimer > 0 && !canFish){ //3s timer before player can fish again
+    void Update(){
+        if (canFishTimer > 0 && !canFish){ //5s timer before player can fish again
             canFishTimer -= Time.deltaTime;
         } else {
             canFishTimer = fishRate;
             canFish = true;
         }
-        if (Input.GetKeyDown(KeyCode.E) && canFish){
+
+        if (stayOnScreen > 0){
+            stayOnScreen -= Time.deltaTime;
+        } else {
+            stayOnScreen = displayTimer;
+            resultText.text = "";
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && inFishSpot && canFish){
             int fishingPower = Random.Range(0, 6);
             int chosenFish = Random.Range(0, FishTypes.Length);
 
             if (fishingPower >= EnduranceLevels[chosenFish]){
-                print("You fished a " + FishTypes[chosenFish] + "!");
+                resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
             } else {
-                print("The fish got away...");
+                resultText.text = "The fish got away...";
             }
             canFish = false;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D player){
+        inFishSpot = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D player){
+        inFishSpot = false;
     }
 }
