@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D body;
     public float moveSpeed = 10;
     Animator anim;
-    public List<string> newCatches = new List<string>(); //newCatches keeps track of the fish caught between scenes
-    List<string> FishTypes = new List<string>(); //FishTypes and FishCounts keep track of all fish ever caught
-    List<int> FishCounts = new List<int>();
 
     void Start(){
         anim = GetComponent<Animator>();

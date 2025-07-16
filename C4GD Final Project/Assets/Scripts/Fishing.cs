@@ -5,8 +5,8 @@ using UnityEngine;
 public class Fishing : MonoBehaviour
 {
     public TMPro.TMP_Text resultText;
-    public string[] FishTypes = {"Tuna", "Salmon", "Mackerel", "Shark"};
-    public int[] EnduranceLevels = {1, 2, 3, 5};
+    public string[] FishTypes;
+    public int[] EnduranceLevels;
     public bool canFish = true;
     public bool inFishSpot = false;
     public bool isFishing;
@@ -18,6 +18,8 @@ public class Fishing : MonoBehaviour
 
     void Start(){
         minigameRef= GameObject.FindGameObjectWithTag("FishConnect").GetComponent<FishingMinigame>();
+        FishTypes = new string[] {"Tuna", "Red Snapper", "Perch", "Salmon"};
+        EnduranceLevels = new int[] {1, 1, 2, 2, 2};
     }
 
     void Update(){
@@ -37,7 +39,6 @@ public class Fishing : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && inFishSpot && canFish){
             isFishing=true;
-            minigameRef.minigame.GetComponent<RectTransform>().anchoredPosition = new Vector2(399.375f, 224.5f);
             minigameRef.canvase.alpha=1;
         }
 
@@ -46,7 +47,7 @@ public class Fishing : MonoBehaviour
             if(minigameRef.minigameSuccess){
                   resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
                  Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
-            }else if(minigameRef.minigameCompleted&&minigameRef.minigameFailure) {
+            }else if(minigameRef.minigameFailure) {
                  resultText.text = "The " + FishTypes[chosenFish] + " got away...";
                }
                  minigameRef.minigameCompleted=!minigameRef.minigameCompleted;
