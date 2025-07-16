@@ -41,6 +41,7 @@ public class Fishing : MonoBehaviour
             if (fishingPower >= EnduranceLevels[chosenFish]){
                 resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
                 Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
+                Deposit.instance.newCatches.Add(FishTypes[chosenFish]);
             } else {
                 resultText.text = "The " + FishTypes[chosenFish] + " got away...";
             }

@@ -4,10 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
-{
-    public static Inventory instance;
-    public GameObject InventoryUI;
+public class Deposit : MonoBehaviour
+{   
+    public static Deposit instance;
+    public GameObject DepositUI;
     public bool onIsland;
     bool inventoryOpened;
     public List<Sprite> FishSprites = new List<Sprite>();
@@ -19,10 +19,10 @@ public class Inventory : MonoBehaviour
         if (instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(InventoryUI);
+            DontDestroyOnLoad(DepositUI);
         } else {
             Destroy(gameObject);
-            Destroy(InventoryUI);
+            Destroy(DepositUI);
         }
     }
 
@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
             if (FishTypes.Count > 0 && FishCounts.Count > 0){
                 //fishtypes(0) -> slot1 fishtype text, fishcounts(0) -> slot1 fishcount text
                 for (int i = 0; i < FishTypes.Count; i++){
-                    Transform currentSlot = InventoryUI.transform.Find("Slot" + (i + 1)).transform;
+                    Transform currentSlot = DepositUI.transform.Find("Slot" + (i + 1)).transform;
                     currentSlot.Find("Fish Type").GetComponent<TMP_Text>().text = FishTypes[i];
                     currentSlot.Find("Fish Count").GetComponent<TMP_Text>().text = "x" + FishCounts[i];
                     foreach (Sprite fishSprite in FishSprites){
@@ -55,14 +55,6 @@ public class Inventory : MonoBehaviour
                 }
             }
             newCatches.Clear();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && onIsland && !inventoryOpened){
-            InventoryUI.SetActive(true);
-            inventoryOpened = true;
-        } else if ((Input.GetKeyDown(KeyCode.E) && onIsland && inventoryOpened) || (!onIsland)){
-            InventoryUI.SetActive(false);
-            inventoryOpened = false;
         }
     }
 }
