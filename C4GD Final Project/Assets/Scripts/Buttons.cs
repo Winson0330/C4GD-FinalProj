@@ -12,12 +12,12 @@ public class Buttons : MonoBehaviour
     public void onClick(){
         TMP_Text promptText = promptButton.GetComponentInChildren<TMP_Text>();
         if (promptText.text == "Yes"){
-            if (PlayerController.instance.onIsland){
+            if (Inventory.instance.onIsland){
                 GameManager.instance.LoadScene(GameManager.instance.ocean);
-                PlayerController.instance.onIsland = false;
+                Inventory.instance.onIsland = false;
             } else {
                 GameManager.instance.LoadScene(GameManager.instance.mainIsland);
-                PlayerController.instance.onIsland = true;
+                Inventory.instance.onIsland = true;
             }
         } else {
             changeScenePrompt.SetActive(false);

@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 78188834}
   - component: {fileID: 78188833}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Fish Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,6 +469,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170208849}
   m_CullTransparentMesh: 1
+--- !u!1 &234204911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234204913}
+  - component: {fileID: 234204912}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &234204912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234204911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5585ea125f55e43fb89c1cb907e28bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryUI: {fileID: 544720336}
+  onIsland: 1
+  newCatches: []
+--- !u!4 &234204913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234204911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35821894, y: 0.4617622, z: 2.1338067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &269253211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,8 +1153,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 665161251}
   - {fileID: 78188832}
+  - {fileID: 665161251}
   m_Father: {fileID: 544720340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1299,7 +1346,7 @@ GameObject:
   - component: {fileID: 693804015}
   - component: {fileID: 693804014}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Fish Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1716,8 +1763,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1311973260}
   - {fileID: 693804013}
+  - {fileID: 1311973260}
   m_Father: {fileID: 544720340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1775,7 +1822,7 @@ GameObject:
   - component: {fileID: 969197436}
   - component: {fileID: 969197435}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Fish Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17620,7 +17667,7 @@ GameObject:
   - component: {fileID: 1194596166}
   - component: {fileID: 1194596165}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Fish Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24388,9 +24435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 1660879988}
   moveSpeed: 10
-  onIsland: 1
-  inventory: []
-  InventoryUI: {fileID: 544720336}
+  newCatches: []
 --- !u!50 &1660879988
 Rigidbody2D:
   serializedVersion: 4
@@ -24572,8 +24617,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1490350036}
   - {fileID: 1194596164}
+  - {fileID: 1490350036}
   m_Father: {fileID: 544720340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -25290,8 +25335,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1965623480}
   - {fileID: 969197434}
+  - {fileID: 1965623480}
   m_Father: {fileID: 544720340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -25351,3 +25396,4 @@ SceneRoots:
   - {fileID: 725330379}
   - {fileID: 1328755437}
   - {fileID: 544720340}
+  - {fileID: 234204913}
