@@ -1,2 +1,3 @@
 # C4GD FinalProj
-E to fish when in the ocean
+E to open inventory in main island
+F to fish in ocean (at the black box)
