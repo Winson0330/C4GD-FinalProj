@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Inventory : MonoBehaviour
     public GameObject InventoryUI;
     public bool onIsland;
     bool inventoryOpened;
+    public List<Sprite> FishSprites = new List<Sprite>();
     public List<string> newCatches = new List<string>(); //newCatches keeps track of the fish caught between scenes
     List<string> FishTypes = new List<string>(); //FishTypes and FishCounts keep track of all fish ever caught
     List<int> FishCounts = new List<int>();
@@ -43,6 +45,13 @@ public class Inventory : MonoBehaviour
                     Transform currentSlot = InventoryUI.transform.Find("Slot" + (i + 1)).transform;
                     currentSlot.Find("Fish Type").GetComponent<TMP_Text>().text = FishTypes[i];
                     currentSlot.Find("Fish Count").GetComponent<TMP_Text>().text = "x" + FishCounts[i];
+                    foreach (Sprite fishSprite in FishSprites){
+                        if (fishSprite.name == FishTypes[i]){
+                            GameObject fishImage = currentSlot.Find("Fish Image").gameObject;
+                            fishImage.SetActive(true);
+                            fishImage.GetComponent<Image>().sprite = fishSprite;
+                        }
+                    }
                 }
             }
             newCatches.Clear();
@@ -51,7 +60,7 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && onIsland && !inventoryOpened){
             InventoryUI.SetActive(true);
             inventoryOpened = true;
-        } else if (Input.GetKeyDown(KeyCode.E) && onIsland && inventoryOpened){
+        } else if ((Input.GetKeyDown(KeyCode.E) && onIsland && inventoryOpened) || (!onIsland)){
             InventoryUI.SetActive(false);
             inventoryOpened = false;
         }

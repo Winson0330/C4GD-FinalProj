@@ -5,14 +5,19 @@ using UnityEngine;
 public class Fishing : MonoBehaviour
 {
     public TMPro.TMP_Text resultText;
-    public string[] FishTypes = {"Tuna", "Salmon", "Mackerel", "Shark"};
-    public int[] EnduranceLevels = {1, 2, 3, 5};
+    public string[] FishTypes;
+    public int[] EnduranceLevels;
     bool canFish = true;
     bool inFishSpot = false;
     float fishRate = 5; //these two are for how fast the player can fish
     float canFishTimer = 5;
     float stayOnScreen = 3; //these two are for how long the result stays on screen
     float displayTimer = 3;
+
+    void Start(){
+        FishTypes = new string[] {"Tuna", "Red Snapper", "Perch", "Salmon"};
+        EnduranceLevels = new int[] {1, 1, 2, 2, 2};
+    }
 
     void Update(){
         if (canFishTimer > 0 && !canFish){ //5s timer before player can fish again
@@ -30,7 +35,7 @@ public class Fishing : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.F) && inFishSpot && canFish){
-            int fishingPower = Random.Range(0, 6);
+            int fishingPower = Random.Range(0, 4);
             int chosenFish = Random.Range(0, FishTypes.Length);
 
             if (fishingPower >= EnduranceLevels[chosenFish]){

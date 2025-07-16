@@ -2458,10 +2458,10 @@ MonoBehaviour:
   resultText: {fileID: 1131595931}
   FishTypes:
   - Tuna
+  - Red Snapper
+  - Perch
   - Salmon
-  - Mackerel
-  - Shark
-  EnduranceLevels: 01000000020000000300000005000000
+  EnduranceLevels: 01000000010000000200000002000000
 --- !u!61 &1405123781
 BoxCollider2D:
   m_ObjectHideFlags: 0
