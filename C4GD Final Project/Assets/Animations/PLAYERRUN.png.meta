@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 2000
+  spritePixelsToUnits: 2200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3550f0929b9514183952d93fd82a53a4
-      internalID: 1134961644
+      spriteID: 3fc2513dbacd546588d38968d9afcbe1
+      internalID: 308058729
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fad514a2249c4c4dbcbc4c4fb0b885a
-      internalID: 1819269972
+      spriteID: 4b8e4cd6758b74999b20a3342581baab
+      internalID: -821719996
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79a5baa58030c462488a62d75c34c2b5
-      internalID: -999589726
+      spriteID: 5e56f28ced0e548d5befb02a9e5ba6d1
+      internalID: 962631143
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf2544bb24ed449a8bd9b05828e9a45b
-      internalID: 810845167
+      spriteID: 9ee94a4cd667040a19e014ff876bfedf
+      internalID: 822522957
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7bec85fb84fe43b28ff51445a844a85
-      internalID: -655639522
+      spriteID: 99af22dfe99fa4d9ba97ebe6450fbf8f
+      internalID: 1759647984
       vertices: []
       indices: 
       edges: []
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b68bb31fd5464d1faa059422bb2c313
-      internalID: -2078601827
+      spriteID: 1c4103f488b8945d98e6a4856c5e9159
+      internalID: -923033938
       vertices: []
       indices: 
       edges: []
@@ -250,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a715c5a7d3d84859822b161b89064c0
-      internalID: 1391233652
+      spriteID: 8bd26de0f8064462db4cd8743bb5e77c
+      internalID: 1931036013
       vertices: []
       indices: 
       edges: []
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2221b28479674ee68c9cd4ea50c48e2
-      internalID: 229201164
+      spriteID: 13dd14732b8724c199f37ebc90021c80
+      internalID: 1136029019
       vertices: []
       indices: 
       edges: []
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ece98facee96049be99b066f2a67be08
-      internalID: 796866124
+      spriteID: beb789d6f126f4fa29bae3ffeaa23b7b
+      internalID: -1246215404
       vertices: []
       indices: 
       edges: []
@@ -313,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c05593f1b5314af1b26a8aececd880f
-      internalID: 1519162139
+      spriteID: 52b9de65e32e14d79adf537d72dba0b4
+      internalID: 376628885
       vertices: []
       indices: 
       edges: []
@@ -330,16 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PLAYERRUN_0: 1134961644
-      PLAYERRUN_1: 1819269972
-      PLAYERRUN_2: -999589726
-      PLAYERRUN_3: 810845167
-      PLAYERRUN_4: -655639522
-      PLAYERRUN_5: -2078601827
-      PLAYERRUN_6: 1391233652
-      PLAYERRUN_7: 229201164
-      PLAYERRUN_8: 796866124
-      PLAYERRUN_9: 1519162139
+      PLAYERRUN_0: 308058729
+      PLAYERRUN_1: -821719996
+      PLAYERRUN_2: 962631143
+      PLAYERRUN_3: 822522957
+      PLAYERRUN_4: 1759647984
+      PLAYERRUN_5: -923033938
+      PLAYERRUN_6: 1931036013
+      PLAYERRUN_7: 1136029019
+      PLAYERRUN_8: -1246215404
+      PLAYERRUN_9: 376628885
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
