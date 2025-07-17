@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     int amountCurrentlyGiven = 0;
     public int remaniningFishCount;
     int requiredFishCount;
+    int amtGivenSoFar;
 
     void Awake(){
         requiredFishCount = 5;
@@ -41,11 +42,14 @@ public class Inventory : MonoBehaviour
     }
 
     public void onDeposit(string buttonName){
-        justFinishedTalking = true;
-        InventoryUI.SetActive(false);
-        GiveFish.SetActive(true);
-        chosenFishToGive = InventoryUI.transform.Find(buttonName).Find("Fish Type").GetComponent<TMP_Text>().text;
-        howManyToGive.text = "How many " + chosenFishToGive + " do you want to give?";
+        int chosenFishAmount = int.Parse(InventoryUI.transform.Find(buttonName).Find("Fish Count").GetComponent<TMP_Text>().text.Replace("x", ""));
+        if (chosenFishAmount > 0){
+            justFinishedTalking = true;
+            InventoryUI.SetActive(false);
+            GiveFish.SetActive(true);
+            chosenFishToGive = InventoryUI.transform.Find(buttonName).Find("Fish Type").GetComponent<TMP_Text>().text;
+            howManyToGive.text = "How many " + chosenFishToGive + " do you want to give?";
+        }
     }
 
     public void increaseAmt(){
@@ -66,11 +70,16 @@ public class Inventory : MonoBehaviour
     }
 
     public void giveFishToCreature(){
-        amountCurrentlyGiven += int.Parse(amountToGive.text);
-        fishQuota.GetComponentInChildren<TMP_Text>().text = amountCurrentlyGiven + " / " + requiredFishCount + " fish";
+        amountCurrentlyGiven = int.Parse(amountToGive.text);
+        amtGivenSoFar += int.Parse(amountToGive.text);
+        fishQuota.GetComponentInChildren<TMP_Text>().text = amtGivenSoFar + " / " + requiredFishCount + " fish";
         remaniningFishCount -= amountCurrentlyGiven;
+        if (remaniningFishCount <= 0){
+            remaniningFishCount = 0;
+        }
         FishCounts[FishTypes.IndexOf(chosenFishToGive)] -= amountCurrentlyGiven;
         GiveFish.SetActive(false);
+        amountToGive.text = "1";
     }
 
     void Update(){

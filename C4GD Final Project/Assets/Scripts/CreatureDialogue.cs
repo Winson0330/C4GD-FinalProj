@@ -27,6 +27,8 @@ public class CreatureDialogue : MonoBehaviour
             if (!talkedOnThisDay){
                 dialogueBoxText.text = "I must be satisfied once more...";
                 talkedOnThisDay = true;
+            } else if (Inventory.instance.remaniningFishCount <= 0){
+                dialogueBoxText.text = "You have fed me well today... Your kind has been spared for another day...";
             } else {
                 dialogueBoxText.text = "Feed me " + Inventory.instance.remaniningFishCount + " more fish and I won't consume the whole world... for now.";
             }
@@ -43,15 +45,17 @@ public class CreatureDialogue : MonoBehaviour
     }
 
     public void onClick(){
-        if (clickCount == 0){
-            dialogueBoxText.text = "Feed me " + Inventory.instance.remaniningFishCount + " fish and I won't consume the whole world... for now.";
+        if (Inventory.instance.remaniningFishCount > 0){
             Inventory.instance.fishQuota.SetActive(true);
-            clickCount += 1;
-        } else if (clickCount == 1){
-            if (Inventory.instance.FishTypes.Count <= 0){
-                dialogueBoxText.text = "You have no fish... I'll be waiting here for you... ";
-            } else {
-                Inventory.instance.talkingWithCreatureState = 3;
+            if (clickCount == 0){
+                dialogueBoxText.text = "Feed me " + Inventory.instance.remaniningFishCount + " fish and I won't consume the whole world... for now.";
+                clickCount += 1;
+            } else if (clickCount == 1){
+                if (Inventory.instance.FishTypes.Count <= 0){
+                    dialogueBoxText.text = "You have no fish... I'll be waiting here for you... ";
+                } else {
+                    Inventory.instance.talkingWithCreatureState = 3;
+                }
             }
         }
     }

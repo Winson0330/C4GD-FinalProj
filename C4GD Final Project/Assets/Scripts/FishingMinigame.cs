@@ -39,12 +39,6 @@ public class FishingMinigame : MonoBehaviour
 
     void Update()
     {
-            timer -= Time.deltaTime;
-            if(timer<=0){
-                timer=timerLength;
-                randomized=Random.Range(0,1f);
-            }
-
         fill.fillAmount=bar/barMax;
         float checkBarPosX=checkBar.transform.localPosition.x;
     if(!minigameCompleted&&fishSystem.canFish&&fishSystem.inFishSpot&&fishSystem.isFishing){
