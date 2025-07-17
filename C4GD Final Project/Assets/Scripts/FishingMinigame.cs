@@ -81,17 +81,17 @@ public class FishingMinigame : MonoBehaviour
                 bar-=Time.deltaTime*barDec;
             }
         }
-        if(barBoundL.GetComponent<RectTransform>().anchoredPosition.x>-400&&
-        barBoundR.GetComponent<RectTransform>().anchoredPosition.x<400){
+        if(barBoundL.GetComponent<RectTransform>().anchoredPosition.x>=-400&&
+        barBoundR.GetComponent<RectTransform>().anchoredPosition.x<=400){
 
             barSpeed=Random.Range(1f,4f);
-            if(randomized>.5f&&barBoundR.GetComponent<RectTransform>().anchoredPosition.x<390){
+            if(randomized>.5f&&barBoundR.GetComponent<RectTransform>().anchoredPosition.x<396){
                 print("right movement ");
                 float currzoneBarX=zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
                 float currzoneBarY=zoneBar.GetComponent<RectTransform>().anchoredPosition.y;
                 currzoneBarX+=1f*barSpeed;
                 zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(currzoneBarX,currzoneBarY);
-            }else{
+            }else if(barBoundL.GetComponent<RectTransform>().anchoredPosition.x>-396){
                 print("left movement");
                 float currzoneBarX=zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
                 float currzoneBarY=zoneBar.GetComponent<RectTransform>().anchoredPosition.y;
