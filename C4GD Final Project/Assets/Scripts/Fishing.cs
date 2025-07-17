@@ -6,7 +6,7 @@ public class Fishing : MonoBehaviour
 {
     public TMPro.TMP_Text resultText;
     public string[] FishTypes;
-    public int[] EnduranceLevels;
+    public static int[] EnduranceLevels;
     public bool canFish = true;
     public bool inFishSpot = false;
     public bool isFishing;
@@ -15,11 +15,14 @@ public class Fishing : MonoBehaviour
     float stayOnScreen = 3; //these two are for how long the result stays on screen
     float displayTimer = 3;
     public FishingMinigame minigameRef;
+    public bool pickedFish;
+    public static int chosenFish;
 
     void Start(){
         minigameRef= GameObject.FindGameObjectWithTag("FishConnect").GetComponent<FishingMinigame>();
         FishTypes = new string[] {"Tuna", "Red Snapper", "Perch", "Salmon"};
-        EnduranceLevels = new int[] {1, 1, 2, 2, 2};
+        EnduranceLevels = new int[] {3,2,1,1};
+        chosenFish = Random.Range(0, FishTypes.Length);
     }
 
     void Update(){
@@ -43,7 +46,7 @@ public class Fishing : MonoBehaviour
         }
 
         if(minigameRef.minigameCompleted){
-            int chosenFish = Random.Range(0, FishTypes.Length);
+            
             if(minigameRef.minigameSuccess){
                   resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
                  Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
@@ -57,7 +60,9 @@ public class Fishing : MonoBehaviour
                  minigameRef.bar=40;
                  isFishing=false;
                 canFish = false;
+                chosenFish = Random.Range(0, FishTypes.Length);
             }
+            
     }
 
     private void OnTriggerStay2D(Collider2D player){
