@@ -8,15 +8,13 @@ public class CreatureDialogue : MonoBehaviour
 {
     public GameObject dialogueTrigger;
     public GameObject creatureDialogue;
-    public GameObject fishQuota;
     Button progressDialogue;
     TMP_Text dialogueBoxText;
-    int requiredFishCount = 5;
     int clickCount = 0;
     bool talkedOnThisDay = false;
 
     void Awake(){
-        GameObject[] persist = new GameObject[] {creatureDialogue, fishQuota, gameObject};
+        GameObject[] persist = new GameObject[] {creatureDialogue, Inventory.instance.fishQuota, gameObject};
         foreach (GameObject objectToPersist in persist){
             DontDestroyOnLoad(objectToPersist);
         }
@@ -24,12 +22,13 @@ public class CreatureDialogue : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D player){
         if (player.gameObject.CompareTag("Player")){
+            Inventory.instance.talkingWithCreatureState = 1;
             creatureDialogue.SetActive(true);
             if (!talkedOnThisDay){
                 dialogueBoxText.text = "I must be satisfied once more...";
                 talkedOnThisDay = true;
             } else {
-                dialogueBoxText.text = "Feed me " + requiredFishCount + " fish and I won't consume the whole world... for now.";
+                dialogueBoxText.text = "Feed me " + Inventory.instance.remaniningFishCount + " more fish and I won't consume the whole world... for now.";
             }
         }
     }
@@ -37,18 +36,23 @@ public class CreatureDialogue : MonoBehaviour
     void OnTriggerExit2D(Collider2D player){
         if (player.gameObject.CompareTag("Player")){
             creatureDialogue.SetActive(false);
-            Deposit.instance.DepositUI.SetActive(false);
+            Inventory.instance.talkingWithCreatureState = 2;
+            Inventory.instance.justFinishedTalking = true;
             clickCount = 1;
         }
     }
 
     public void onClick(){
         if (clickCount == 0){
-            dialogueBoxText.text = "Feed me " + requiredFishCount + " fish and I won't consume the whole world... for now.";
-            fishQuota.SetActive(true);
+            dialogueBoxText.text = "Feed me " + Inventory.instance.remaniningFishCount + " fish and I won't consume the whole world... for now.";
+            Inventory.instance.fishQuota.SetActive(true);
             clickCount += 1;
         } else if (clickCount == 1){
-            Deposit.instance.DepositUI.SetActive(true);
+            if (Inventory.instance.FishTypes.Count <= 0){
+                dialogueBoxText.text = "You have no fish... I'll be waiting here for you... ";
+            } else {
+                Inventory.instance.talkingWithCreatureState = 3;
+            }
         }
     }
 
@@ -57,11 +61,5 @@ public class CreatureDialogue : MonoBehaviour
     {
         progressDialogue = creatureDialogue.GetComponentInChildren<Button>();
         dialogueBoxText = progressDialogue.GetComponentInChildren<TMP_Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
