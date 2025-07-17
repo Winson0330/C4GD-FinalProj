@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D body;
     public float moveSpeed = 10;
+    AudioSource audio;
     Animator anim;
 
     void Start(){
         anim = GetComponent<Animator>();
+        audio=GetComponent<AudioSource>();
     }
     
     // Update is called once per frame
@@ -19,9 +21,14 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
+        if(horizontalInput!=0&&!audio.isPlaying) audio.Play();
+        else if(horizontalInput==0&&audio.isPlaying) audio.Stop();
+
         if (horizontalInput < 0){
             transform.localScale = new Vector3(-1, 1, 1);
-        } else if (horizontalInput > 0){
+        }
+        
+        if (horizontalInput > 0){
             transform.localScale = new Vector3(1, 1, 1);
         }
 
