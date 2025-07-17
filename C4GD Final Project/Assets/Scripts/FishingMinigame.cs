@@ -13,8 +13,12 @@ public class FishingMinigame : MonoBehaviour
     public float barMax=100;
     public float barDec=10;
     public float barInc=10;
+    public float barSpeed;
     public float fishStack; //spacebar click/hold (right speed)
     public float fishStrength; //how jhard fish is to catch(left speed)
+    float randomized;
+    float timer=0.5f;
+    public float timerLength= .5f;
     public Canvas minigame;
     public GameObject checkBar; //bar that does the main checks
     public GameObject zoneBar; //range where bar increments
@@ -35,6 +39,12 @@ public class FishingMinigame : MonoBehaviour
 
     void Update()
     {
+            timer -= Time.deltaTime;
+            if(timer<=0){
+                timer=timerLength;
+                randomized=Random.Range(0,1f);
+            }
+
         fill.fillAmount=bar/barMax;
         float checkBarPosX=checkBar.transform.localPosition.x;
     if(!minigameCompleted&&fishSystem.canFish&&fishSystem.inFishSpot&&fishSystem.isFishing){
@@ -71,6 +81,24 @@ public class FishingMinigame : MonoBehaviour
                 bar-=Time.deltaTime*barDec;
             }
         }
+        if(barBoundL.GetComponent<RectTransform>().anchoredPosition.x>-400&&
+        barBoundR.GetComponent<RectTransform>().anchoredPosition.x<400){
+
+            barSpeed=Random.Range(1f,4f);
+            if(randomized>.5f&&barBoundR.GetComponent<RectTransform>().anchoredPosition.x<390){
+                print("right movement ");
+                float currzoneBarX=zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
+                float currzoneBarY=zoneBar.GetComponent<RectTransform>().anchoredPosition.y;
+                currzoneBarX+=1f*barSpeed;
+                zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(currzoneBarX,currzoneBarY);
+            }else{
+                print("left movement");
+                float currzoneBarX=zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
+                float currzoneBarY=zoneBar.GetComponent<RectTransform>().anchoredPosition.y;
+                currzoneBarX-=1f*barSpeed;
+                zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(currzoneBarX,currzoneBarY);
+            }
+        }
         if(!Input.GetKey(KeyCode.Space)){
             spaceDown.GetComponent<CanvasGroup>().alpha=0;
             spaceUp.GetComponent<CanvasGroup>().alpha=1;
@@ -82,8 +110,13 @@ public class FishingMinigame : MonoBehaviour
         float checkBarPosY=checkBar.transform.localPosition.y;
         if(checkBarPosX>=400) checkBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(399,checkBarPosY);
         if(checkBarPosX<=-400) checkBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(-399,checkBarPosY);
+        if(zoneBar.GetComponent<RectTransform>().anchoredPosition.x>=400) zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(399,zoneBar.GetComponent<RectTransform>().anchoredPosition.y);
+        if(zoneBar.GetComponent<RectTransform>().anchoredPosition.x<=-400) zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(-399,zoneBar.GetComponent<RectTransform>().anchoredPosition.y);
     }
-        if(bar<=0||bar>=100) minigameCompleted=true;
+        if(bar<=0||bar>=100){
+            minigameCompleted=true;
+            zoneBar.GetComponent<RectTransform>().anchoredPosition=new Vector2(0,-180);
+        }
         if(bar<=0) minigameFailure=true;
         if(bar>=100) minigameSuccess=true;
         print(""+Fishing.chosenFish +" "+Fishing.EnduranceLevels[Fishing.chosenFish]);
@@ -96,9 +129,9 @@ public class FishingMinigame : MonoBehaviour
         float halfX=(zoneBar.GetComponent<RectTransform>().sizeDelta.x)/2f;
         float zoneBarLPosX=barBoundL.GetComponent<RectTransform>().anchoredPosition.x;
         float zoneBarRPosX=barBoundR.GetComponent<RectTransform>().anchoredPosition.x;
-        zoneBarLPosX=-halfX;
+        zoneBarLPosX=-halfX+zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
         barBoundL.GetComponent<RectTransform>().anchoredPosition = new Vector2(zoneBarLPosX,0);
-        zoneBarRPosX=halfX;
+        zoneBarRPosX=halfX+zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
         barBoundR.GetComponent<RectTransform>().anchoredPosition = new Vector2(zoneBarRPosX,0);
     }
     public void enduranceTwoBarSize(){
@@ -108,9 +141,9 @@ public class FishingMinigame : MonoBehaviour
         float halfX=(zoneBar.GetComponent<RectTransform>().sizeDelta.x)/2f;
         float zoneBarLPosX=barBoundL.GetComponent<RectTransform>().anchoredPosition.x;
         float zoneBarRPosX=barBoundR.GetComponent<RectTransform>().anchoredPosition.x;
-        zoneBarLPosX=-halfX;
+        zoneBarLPosX=-halfX+zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
         barBoundL.GetComponent<RectTransform>().anchoredPosition = new Vector2(zoneBarLPosX,0);
-        zoneBarRPosX=halfX;
+        zoneBarRPosX=halfX+zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
         barBoundR.GetComponent<RectTransform>().anchoredPosition = new Vector2(zoneBarRPosX,0);
     }
     public void enduranceThreeBarSize(){
@@ -120,9 +153,9 @@ public class FishingMinigame : MonoBehaviour
         float halfX=(zoneBar.GetComponent<RectTransform>().sizeDelta.x)/2f;
         float zoneBarLPosX=barBoundL.GetComponent<RectTransform>().anchoredPosition.x;
         float zoneBarRPosX=barBoundR.GetComponent<RectTransform>().anchoredPosition.x;
-        zoneBarLPosX=-halfX;
+        zoneBarLPosX=-halfX+zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
         barBoundL.GetComponent<RectTransform>().anchoredPosition = new Vector2(zoneBarLPosX,0);
-        zoneBarRPosX=halfX;
+        zoneBarRPosX=halfX+zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
         barBoundR.GetComponent<RectTransform>().anchoredPosition = new Vector2(zoneBarRPosX,0);
     }
 }

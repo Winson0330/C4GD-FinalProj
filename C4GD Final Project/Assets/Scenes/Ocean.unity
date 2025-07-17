@@ -1250,6 +1250,7 @@ MonoBehaviour:
   barMax: 100
   barDec: 30
   barInc: 30
+  barSpeed: 2
   fishStack: 3
   fishStrength: 1
   minigame: {fileID: 495251858}
