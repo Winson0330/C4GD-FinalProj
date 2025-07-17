@@ -9,11 +9,11 @@ public class Buttons : MonoBehaviour
     public Button promptButton;
     public GameObject changeScenePrompt;
     
-    public void onClick(){
+    public void onClick(string sceneName){
         TMP_Text promptText = promptButton.GetComponentInChildren<TMP_Text>();
         if (promptText.text == "Yes"){
             if (Inventory.instance.onIsland){
-                GameManager.instance.LoadScene(GameManager.instance.ocean);
+                GameManager.instance.LoadScene(sceneName);
                 Inventory.instance.onIsland = false;
             } else {
                 GameManager.instance.LoadScene(GameManager.instance.mainIsland);
