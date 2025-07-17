@@ -69,6 +69,7 @@ public class Inventory : MonoBehaviour
         amountCurrentlyGiven += int.Parse(amountToGive.text);
         fishQuota.GetComponentInChildren<TMP_Text>().text = amountCurrentlyGiven + " / " + requiredFishCount + " fish";
         remaniningFishCount -= amountCurrentlyGiven;
+        FishCounts[FishTypes.IndexOf(chosenFishToGive)] -= amountCurrentlyGiven;
         GiveFish.SetActive(false);
     }
 
