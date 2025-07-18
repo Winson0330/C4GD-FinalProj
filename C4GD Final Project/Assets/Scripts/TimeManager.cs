@@ -15,6 +15,7 @@ public class TimeManager : MonoBehaviour
     int minutes = 0;
     float timer = 0;
     public float days=0;
+    public bool isnextDay;
     private static bool gameObjectExists = false;
     private static bool timeTrackerExists = false;
     public float intensityReductionFactor=0.5f;
@@ -75,19 +76,24 @@ public class TimeManager : MonoBehaviour
             }
             timeText.text = string.Format("{0:00}:{1:00}", hours, minutes);
         }
+        if(hours==6&&minutes==0) isnextDay=true;
         if (hours <= 6 || hours >= 19){
             gameObject.GetComponentInChildren<Image>().sprite = MoonBG;
+            if(isnextDay){
+            days+=(int) 1*Time.deltaTime;
+            isnextDay=false;
+            }
             dayMusic.Stop();
             if(nightMusic.time==0){
             nightMusic.Play();
             }
-            print("nightMusic play");
-            if (sceneLight!=null&&sceneLight.intensity > 0.035f)
+
+            if (sceneLight!=null&&sceneLight.intensity > 0.05f)
             {
                 sceneLight.intensity -= intensityReductionFactor * Time.deltaTime;
-                if (sceneLight.intensity < 0.035f)
+                if (sceneLight.intensity < 0.05f)
                 {
-                    sceneLight.intensity = 0.035f;
+                    sceneLight.intensity = 0.05f;
                 }
             }
             intensitySave=sceneLight.intensity;
@@ -96,7 +102,7 @@ public class TimeManager : MonoBehaviour
             if(dayMusic.time==0){
             dayMusic.Play();
             }
-            print("dayMusic play");
+            
             nightMusic.Stop();
                 sceneLight.intensity += intensityReductionFactor * Time.deltaTime;
                 if (sceneLight.intensity > 1f)

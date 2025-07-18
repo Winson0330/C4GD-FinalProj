@@ -7975,7 +7975,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -10780,6 +10780,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptButton: {fileID: 1565927626}
   changeScenePrompt: {fileID: 1102092849}
+--- !u!1 &1567088305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567088307}
+  - component: {fileID: 1567088306}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1567088306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567088305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: bb56aaeafd03d7449a80ef60d231a991, type: 2}
+--- !u!4 &1567088307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567088305}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.6999483, y: -6.5510674, z: 10.883437}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614189169
 GameObject:
   m_ObjectHideFlags: 0
@@ -10980,6 +11029,7 @@ RectTransform:
   m_Children:
   - {fileID: 1312520879}
   - {fileID: 397399149}
+  - {fileID: 1843137656}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11016,6 +11066,7 @@ MonoBehaviour:
   newCatches: []
   FishTypes: []
   remaniningFishCount: 0
+  requiredFishCount: 0
 --- !u!1 &1660879986
 GameObject:
   m_ObjectHideFlags: 0
@@ -31599,13 +31650,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843137652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 280611026}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1620964409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -32687,6 +32738,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTrigger: {fileID: 2096199587}
   creatureDialogue: {fileID: 1614189169}
+  talkedOnThisDay: 0
+  seaCreature: {fileID: 30467931}
+  time: {fileID: 2143393617}
+  inventory: {fileID: 1620964410}
 --- !u!61 &2096199589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32914,6 +32969,8 @@ MonoBehaviour:
   TimeTracker: {fileID: 2143393612}
   SunBG: {fileID: 21300000, guid: 3b6eb250c8c4c44e69c02e9e150b5b79, type: 3}
   MoonBG: {fileID: 21300000, guid: 86c89e22da3d14f479a5d8d19ffe231d, type: 3}
+  days: 0
+  isnextDay: 0
   intensityReductionFactor: 0.5
   sceneLight: {fileID: 619394801}
   playerLight: {fileID: 1022255773}
@@ -33071,6 +33128,6 @@ SceneRoots:
   - {fileID: 30467933}
   - {fileID: 1614189173}
   - {fileID: 2096199590}
-  - {fileID: 1843137656}
   - {fileID: 2143393616}
   - {fileID: 15688959}
+  - {fileID: 1567088307}

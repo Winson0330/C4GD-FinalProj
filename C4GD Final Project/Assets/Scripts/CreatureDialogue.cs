@@ -6,29 +6,71 @@ using TMPro;
 
 public class CreatureDialogue : MonoBehaviour
 {
+    public static CreatureDialogue instance;
     public GameObject dialogueTrigger;
     public GameObject creatureDialogue;
     Button progressDialogue;
     TMP_Text dialogueBoxText;
     int clickCount = 0;
+    float curDay;
     public bool talkedOnThisDay = false;
+    public GameObject seaCreature;
+    public TimeManager time;
+    public Inventory inventory;
 
     void Awake(){
-        GameObject[] persist = new GameObject[] {creatureDialogue, Inventory.instance.fishQuota, gameObject};
-        foreach (GameObject objectToPersist in persist){
-            DontDestroyOnLoad(objectToPersist);
+        // GameObject[] persist = new GameObject[] {creatureDialogue, Inventory.instance.fishQuota, gameObject};
+        // foreach (GameObject objectToPersist in persist){
+        //     DontDestroyOnLoad(objectToPersist);
+        // }
+        GameObject[] persist = new GameObject[] {creatureDialogue, Inventory.instance.fishQuota, gameObject, seaCreature};
+        if(instance == null){
+            instance = this;
+            // foreach (GameObject objectToPersist in persist){
+            //     DontDestroyOnLoad(objectToPersist);
+            // }
+
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(creatureDialogue);
+            DontDestroyOnLoad(seaCreature);
         }
+        else {
+            Destroy(creatureDialogue);
+            Destroy(gameObject);
+        }
+
     }
 
     void Start()
     {
         progressDialogue = creatureDialogue.GetComponentInChildren<Button>();
         dialogueBoxText = progressDialogue.GetComponentInChildren<TMP_Text>();
+        time=GameObject.FindObjectOfType<TimeManager>();
+        inventory=GameObject.FindObjectOfType<Inventory>();
+        curDay=time.days;
+        talkedOnThisDay=false;
+    }
+    
+    void Update(){
+        if(curDay!=time.days){
+            inventory.requiredFishCount+=(int) (70f*Time.deltaTime);
+            inventory.remaniningFishCount=inventory.requiredFishCount;
+            curDay=time.days;
+            talkedOnThisDay=false;
+            seaCreature = GameObject.Find("Sea Creature");
+            if(seaCreature.GetComponent<SpriteRenderer>().color.a<=255){
+                Color color=seaCreature.GetComponent<SpriteRenderer>().color;
+                color.a+=25*Time.deltaTime;
+                seaCreature.GetComponent<SpriteRenderer>().color=color;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D player){
         if (player.gameObject.CompareTag("Player")){
             Inventory.instance.talkingWithCreatureState = 1;
+            //Creature Dialogue
+            //creatureDialogue = GameObject.Find("Creature Dialogue");
             creatureDialogue.SetActive(true);
             if (!talkedOnThisDay){
                 dialogueBoxText.text = "I must be satisfied once more...";
@@ -43,6 +85,7 @@ public class CreatureDialogue : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D player){
         if (player.gameObject.CompareTag("Player")){
+            //creatureDialogue = GameObject.Find("Creature Dialogue");
             creatureDialogue.SetActive(false);
             Inventory.instance.talkingWithCreatureState = 2;
             Inventory.instance.justFinishedTalking = true;
@@ -64,7 +107,13 @@ public class CreatureDialogue : MonoBehaviour
                 }
             }
         } else {
-            dialogueBoxText.text = "You beat our (really janky and unfinished) demo!!! :D";
+            dialogueBoxText.text = "I will be here tomorrow...";
+            seaCreature = GameObject.Find("Sea Creature");
+            if(seaCreature.GetComponent<SpriteRenderer>().color.a>0){
+                Color color=seaCreature.GetComponent<SpriteRenderer>().color;
+                color.a-=25*Time.deltaTime;
+                seaCreature.GetComponent<SpriteRenderer>().color=color;
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
     string chosenFishToGive;
     int amountCurrentlyGiven = 0;
     public int remaniningFishCount;
-    int requiredFishCount;
+    public int requiredFishCount;
     int amtGivenSoFar;
 
     void Awake(){
