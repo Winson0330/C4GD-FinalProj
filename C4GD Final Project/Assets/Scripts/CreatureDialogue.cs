@@ -53,7 +53,7 @@ public class CreatureDialogue : MonoBehaviour
     
     void Update(){
         if(curDay!=time.days){
-            inventory.requiredFishCount+=(int) (70f*Time.deltaTime);
+            inventory.requiredFishCount+=(int) (64f*Time.deltaTime);
             inventory.remaniningFishCount=inventory.requiredFishCount;
             curDay=time.days;
             talkedOnThisDay=false;

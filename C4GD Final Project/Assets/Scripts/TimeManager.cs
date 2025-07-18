@@ -25,6 +25,7 @@ public class TimeManager : MonoBehaviour
     public GameObject player;
     public AudioSource dayMusic;
     public AudioSource nightMusic;
+    public AudioSource oceanStuff;
 
     void Awake(){
         if (gameObjectExists) {
@@ -86,6 +87,7 @@ public class TimeManager : MonoBehaviour
             dayMusic.Stop();
             if(nightMusic.time==0){
             nightMusic.Play();
+            oceanStuff.Play();
             }
 
             if (sceneLight!=null&&sceneLight.intensity > 0.05f)
@@ -101,8 +103,9 @@ public class TimeManager : MonoBehaviour
             gameObject.GetComponentInChildren<Image>().sprite = SunBG;
             if(dayMusic.time==0){
             dayMusic.Play();
+            oceanStuff.Play();
             }
-            
+
             nightMusic.Stop();
                 sceneLight.intensity += intensityReductionFactor * Time.deltaTime;
                 if (sceneLight.intensity > 1f)
