@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class Fishing : MonoBehaviour
 {
@@ -58,7 +59,8 @@ public class Fishing : MonoBehaviour
             minigameRef.canvase.alpha=1;
             player.moveSpeed=0;
 
-            anim.SetTrigger("startFishing"); //play fishengage
+            anim.SetBool("startFishing", true); //play fishengage
+            anim.SetBool("Fishing", true);
 
             if(timer>0){
                 fUp.GetComponent<CanvasGroup>().alpha=0;
@@ -66,6 +68,11 @@ public class Fishing : MonoBehaviour
             }else{
                 fDown.GetComponent<CanvasGroup>().alpha=0;
             }
+            async void moveToFishIdleAnim(){
+                await Task.Delay(300);
+                anim.SetBool("startFishing", false);
+            }
+            moveToFishIdleAnim();
             fishAnim=true;
         }
 
@@ -74,29 +81,32 @@ public class Fishing : MonoBehaviour
             if(minigameRef.minigameSuccess){
                 resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
                 Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
-                fishAnim=false;
-                anim.SetTrigger("fishSuccess");
-                player.moveSpeed=10;
-                fUp.GetComponent<CanvasGroup>().alpha=1;
-                fDown.GetComponent<CanvasGroup>().alpha=0;
-            }else if(minigameRef.minigameFailure) {
+                anim.SetBool("fishSuccess", true);
+            } else if(minigameRef.minigameFailure){
                 resultText.text = "The " + FishTypes[chosenFish] + " got away...";
-                fishAnim=false;
-                player.moveSpeed=10;
-                fUp.GetComponent<CanvasGroup>().alpha=1;
-                fDown.GetComponent<CanvasGroup>().alpha=0;
-               }
-                catchAudio.Play();
-                minigameRef.minigameCompleted=false;
-                minigameRef.minigameSuccess=false;
-                minigameRef.minigameFailure=false;
-                minigameRef.canvase.alpha=0;
-                minigameRef.bar=40;
-                
-                isFishing=false;
-                canFish = false;
-                chosenFish = Random.Range(0, FishTypes.Length);
             }
+            async void moveToIdleAnim(){
+                await Task.Delay(50);
+                anim.SetBool("fishSuccess", false);
+                anim.SetBool("Fishing", false);
+            }
+            moveToIdleAnim();
+            fishAnim = false;
+            player.moveSpeed = 10;
+            fUp.GetComponent<CanvasGroup>().alpha = 1;
+            fDown.GetComponent<CanvasGroup>().alpha = 0;
+            catchAudio.Play();
+            
+            minigameRef.minigameCompleted=false;
+            minigameRef.minigameSuccess=false;
+            minigameRef.minigameFailure=false;
+            minigameRef.canvase.alpha=0;
+            minigameRef.bar=40;
+            
+            isFishing=false;
+            canFish = false;
+            chosenFish = Random.Range(0, FishTypes.Length);
+        }
             
     }
 
