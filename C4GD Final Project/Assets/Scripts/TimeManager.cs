@@ -66,6 +66,9 @@ public class TimeManager : MonoBehaviour
                     hours += 1;
                     minutes = 0;
                 }
+                if (hours == 24){
+                    hours = 0;
+                }
             }
             timeText.text = string.Format("{0:00}:{1:00}", hours, minutes);
         }
