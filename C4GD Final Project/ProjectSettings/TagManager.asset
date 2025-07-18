@@ -8,6 +8,8 @@ TagManager:
   - barBound
   - zoneRange
   - FishiesMain
+  - GlobalLight
+  - PlayerLight
   layers:
   - Default
   - TransparentFX

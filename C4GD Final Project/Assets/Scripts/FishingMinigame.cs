@@ -39,6 +39,12 @@ public class FishingMinigame : MonoBehaviour
 
     void Update()
     {
+        timer -= Time.deltaTime;
+            if(timer<=0){
+                timer=timerLength;
+                randomized=Random.Range(0,1f);
+            }
+
         fill.fillAmount=bar/barMax;
         float checkBarPosX=checkBar.transform.localPosition.x;
     if(!minigameCompleted&&fishSystem.canFish&&fishSystem.inFishSpot&&fishSystem.isFishing){
@@ -78,13 +84,15 @@ public class FishingMinigame : MonoBehaviour
         if(barBoundL.GetComponent<RectTransform>().anchoredPosition.x>=-400&&
         barBoundR.GetComponent<RectTransform>().anchoredPosition.x<=400){
 
-            barSpeed=Random.Range(1f,4f);
+            barSpeed=Random.Range(1f,3f);
             if(randomized>.5f&&barBoundR.GetComponent<RectTransform>().anchoredPosition.x<396){
+                print("move right");
                 float currzoneBarX=zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
                 float currzoneBarY=zoneBar.GetComponent<RectTransform>().anchoredPosition.y;
                 currzoneBarX+=1f*barSpeed;
                 zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(currzoneBarX,currzoneBarY);
             }else if(barBoundL.GetComponent<RectTransform>().anchoredPosition.x>-396){
+                print("move left");
                 float currzoneBarX=zoneBar.GetComponent<RectTransform>().anchoredPosition.x;
                 float currzoneBarY=zoneBar.GetComponent<RectTransform>().anchoredPosition.y;
                 currzoneBarX-=1f*barSpeed;
@@ -102,8 +110,8 @@ public class FishingMinigame : MonoBehaviour
         float checkBarPosY=checkBar.transform.localPosition.y;
         if(checkBarPosX>=400) checkBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(399,checkBarPosY);
         if(checkBarPosX<=-400) checkBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(-399,checkBarPosY);
-        if(zoneBar.GetComponent<RectTransform>().anchoredPosition.x>=400) zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(399,zoneBar.GetComponent<RectTransform>().anchoredPosition.y);
-        if(zoneBar.GetComponent<RectTransform>().anchoredPosition.x<=-400) zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(-399,zoneBar.GetComponent<RectTransform>().anchoredPosition.y);
+        if(zoneBar.GetComponent<RectTransform>().anchoredPosition.x>=399) zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(398,zoneBar.GetComponent<RectTransform>().anchoredPosition.y);
+        if(zoneBar.GetComponent<RectTransform>().anchoredPosition.x<=-399) zoneBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(-398,zoneBar.GetComponent<RectTransform>().anchoredPosition.y);
     }
         if(bar<=0||bar>=100){
             minigameCompleted=true;

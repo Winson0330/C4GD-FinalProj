@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 7dcd5531babe0364abbc67aa421c17f4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FISHSUCCESS_0
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 12852
+        width: 2552
+        height: 3032
+      alignment: 9
+      pivot: {x: 0.4, y: 0.46459866}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e066176b53a2c854dbad8d4b58855423
+      internalID: -1218873257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_1
+      rect:
+        serializedVersion: 2
+        x: 5428
+        y: 12852
+        width: 2712
+        height: 3032
+      alignment: 9
+      pivot: {x: 0.4, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15787a7f2466df489f48338c18840ac
+      internalID: 1938865617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_2
+      rect:
+        serializedVersion: 2
+        x: 9620
+        y: 12852
+        width: 2616
+        height: 2936
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7189e2171aa83fa45a3852169a4277b2
+      internalID: -755745838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_3
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 8756
+        width: 2744
+        height: 2840
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 615304f70d6eba7498538d614e67970d
+      internalID: -220693865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_4
+      rect:
+        serializedVersion: 2
+        x: 5396
+        y: 8756
+        width: 2776
+        height: 2744
+      alignment: 9
+      pivot: {x: 0.41, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afbca1e3c1edb4e4abfa8059dbcff736
+      internalID: -1057453631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_5
+      rect:
+        serializedVersion: 2
+        x: 9300
+        y: 8756
+        width: 2968
+        height: 2616
+      alignment: 9
+      pivot: {x: 0.41, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840c5cb81786858499fae7297a7a287a
+      internalID: 59422923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_6
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 4660
+        width: 2968
+        height: 3096
+      alignment: 9
+      pivot: {x: 0.50000006, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f29ca22309602b41bc9a9e6b8a05e02
+      internalID: 1738649888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_7
+      rect:
+        serializedVersion: 2
+        x: 4532
+        y: 4660
+        width: 3000
+        height: 3192
+      alignment: 9
+      pivot: {x: 0.63, y: 0.41}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 311e2b8a2eae8b64193f39b9b7df17f4
+      internalID: -556656645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_8
+      rect:
+        serializedVersion: 2
+        x: 9524
+        y: 4660
+        width: 1912
+        height: 3096
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade698bc8dcc6a7449bcb94e8413e8db
+      internalID: -1213306730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_9
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 564
+        width: 2776
+        height: 3000
+      alignment: 9
+      pivot: {x: 0.645, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97eeffddd3006443a99ee06ea910150
+      internalID: 81074635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FISHSUCCESS_10
+      rect:
+        serializedVersion: 2
+        x: 5364
+        y: 532
+        width: 1944
+        height: 3064
+      alignment: 9
+      pivot: {x: 0.52, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a658f38919bf6f4087ea705cd1cb01c
+      internalID: -1882464301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FISHSUCCESS_0: -1218873257
+      FISHSUCCESS_1: 1938865617
+      FISHSUCCESS_10: -1882464301
+      FISHSUCCESS_2: -755745838
+      FISHSUCCESS_3: -220693865
+      FISHSUCCESS_4: -1057453631
+      FISHSUCCESS_5: 59422923
+      FISHSUCCESS_6: 1738649888
+      FISHSUCCESS_7: -556656645
+      FISHSUCCESS_8: -1213306730
+      FISHSUCCESS_9: 81074635
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
