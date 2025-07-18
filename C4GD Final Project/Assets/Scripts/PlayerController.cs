@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-        if (Inventory.instance.onIsland){
+        if (Inventory.instance.onIsland){ //requires you to start from main island scene
             Vector2 inputDir = new Vector2(horizontalInput, verticalInput).normalized;
             body.velocity = inputDir * moveSpeed;
         } else {

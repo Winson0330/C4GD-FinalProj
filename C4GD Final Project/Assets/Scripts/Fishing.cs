@@ -66,25 +66,25 @@ public class Fishing : MonoBehaviour
         if(minigameRef.minigameCompleted){
             
             if(minigameRef.minigameSuccess){
-                  resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
-                 Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
-                 player.moveSpeed=10;
-                 fUp.GetComponent<CanvasGroup>().alpha=1;
-                 fDown.GetComponent<CanvasGroup>().alpha=0;
+                resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
+                Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
+                player.moveSpeed=10;
+                fUp.GetComponent<CanvasGroup>().alpha=1;
+                fDown.GetComponent<CanvasGroup>().alpha=0;
             }else if(minigameRef.minigameFailure) {
-                 resultText.text = "The " + FishTypes[chosenFish] + " got away...";
-                 player.moveSpeed=10;
-                 fUp.GetComponent<CanvasGroup>().alpha=1;
-                 fDown.GetComponent<CanvasGroup>().alpha=0;
+                resultText.text = "The " + FishTypes[chosenFish] + " got away...";
+                player.moveSpeed=10;
+                fUp.GetComponent<CanvasGroup>().alpha=1;
+                fDown.GetComponent<CanvasGroup>().alpha=0;
                }
 
-                 minigameRef.minigameCompleted=!minigameRef.minigameCompleted;
-                 minigameRef.minigameSuccess=!minigameRef.minigameSuccess;
-                 minigameRef.minigameFailure=!minigameRef.minigameFailure;
-                 minigameRef.canvase.alpha=0;
-                 minigameRef.bar=40;
-                 
-                 isFishing=false;
+                minigameRef.minigameCompleted=!minigameRef.minigameCompleted;
+                minigameRef.minigameSuccess=!minigameRef.minigameSuccess;
+                minigameRef.minigameFailure=!minigameRef.minigameFailure;
+                minigameRef.canvase.alpha=0;
+                minigameRef.bar=40;
+                
+                isFishing=false;
                 canFish = false;
                 chosenFish = Random.Range(0, FishTypes.Length);
             }

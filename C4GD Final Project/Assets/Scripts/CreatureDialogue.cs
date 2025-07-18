@@ -20,6 +20,12 @@ public class CreatureDialogue : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        progressDialogue = creatureDialogue.GetComponentInChildren<Button>();
+        dialogueBoxText = progressDialogue.GetComponentInChildren<TMP_Text>();
+    }
+
     void OnTriggerEnter2D(Collider2D player){
         if (player.gameObject.CompareTag("Player")){
             Inventory.instance.talkingWithCreatureState = 1;
@@ -28,7 +34,7 @@ public class CreatureDialogue : MonoBehaviour
                 dialogueBoxText.text = "I must be satisfied once more...";
                 talkedOnThisDay = true;
             } else if (Inventory.instance.remaniningFishCount <= 0){
-                dialogueBoxText.text = "You have fed me well today... Your kind has been spared for another day...";
+                dialogueBoxText.text = "You have fed me well... Your kind has been spared for another day...";
             } else {
                 dialogueBoxText.text = "Feed me " + Inventory.instance.remaniningFishCount + " more fish and I won't consume the whole world... for now.";
             }
@@ -57,13 +63,8 @@ public class CreatureDialogue : MonoBehaviour
                     Inventory.instance.talkingWithCreatureState = 3;
                 }
             }
+        } else {
+            dialogueBoxText.text = "You beat our (really janky and unfinished) demo!!! :D";
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        progressDialogue = creatureDialogue.GetComponentInChildren<Button>();
-        dialogueBoxText = progressDialogue.GetComponentInChildren<TMP_Text>();
     }
 }

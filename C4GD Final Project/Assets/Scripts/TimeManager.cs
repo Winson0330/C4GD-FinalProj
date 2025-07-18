@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
     public GameObject TimeTracker;
+    public Sprite SunBG;
+    public Sprite MoonBG;
     int hours = 0;
     int minutes = 0;
     float timer = 0;
@@ -46,6 +49,11 @@ public class TimeManager : MonoBehaviour
                 }
             }
             timeText.text = string.Format("{0:00}:{1:00}", hours, minutes);
+        }
+        if (hours <= 6 || hours >= 19){
+            gameObject.GetComponentInChildren<Image>().sprite = MoonBG;
+        } else {
+            gameObject.GetComponentInChildren<Image>().sprite = SunBG;
         }
     }
 }

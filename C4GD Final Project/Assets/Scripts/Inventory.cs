@@ -44,7 +44,6 @@ public class Inventory : MonoBehaviour
     public void onDeposit(string buttonName){
         int chosenFishAmount = int.Parse(InventoryUI.transform.Find(buttonName).Find("Fish Count").GetComponent<TMP_Text>().text.Replace("x", ""));
         if (chosenFishAmount > 0){
-            justFinishedTalking = true;
             InventoryUI.SetActive(false);
             GiveFish.SetActive(true);
             chosenFishToGive = InventoryUI.transform.Find(buttonName).Find("Fish Type").GetComponent<TMP_Text>().text;
