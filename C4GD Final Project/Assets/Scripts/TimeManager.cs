@@ -14,6 +14,7 @@ public class TimeManager : MonoBehaviour
     int hours = 7;
     int minutes = 0;
     float timer = 0;
+    public float days=0;
     private static bool gameObjectExists = false;
     private static bool timeTrackerExists = false;
     public float intensityReductionFactor=0.5f;
@@ -21,6 +22,8 @@ public class TimeManager : MonoBehaviour
     public Light2D sceneLight;
     public Light2D playerLight;
     public GameObject player;
+    public AudioSource dayMusic;
+    public AudioSource nightMusic;
 
     void Awake(){
         if (gameObjectExists) {
@@ -74,6 +77,11 @@ public class TimeManager : MonoBehaviour
         }
         if (hours <= 6 || hours >= 19){
             gameObject.GetComponentInChildren<Image>().sprite = MoonBG;
+            dayMusic.Stop();
+            if(nightMusic.time==0){
+            nightMusic.Play();
+            }
+            print("nightMusic play");
             if (sceneLight!=null&&sceneLight.intensity > 0.035f)
             {
                 sceneLight.intensity -= intensityReductionFactor * Time.deltaTime;
@@ -85,6 +93,11 @@ public class TimeManager : MonoBehaviour
             intensitySave=sceneLight.intensity;
         } else {
             gameObject.GetComponentInChildren<Image>().sprite = SunBG;
+            if(dayMusic.time==0){
+            dayMusic.Play();
+            }
+            print("dayMusic play");
+            nightMusic.Stop();
                 sceneLight.intensity += intensityReductionFactor * Time.deltaTime;
                 if (sceneLight.intensity > 1f)
                 {

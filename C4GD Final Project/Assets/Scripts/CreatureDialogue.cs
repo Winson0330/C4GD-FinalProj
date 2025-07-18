@@ -11,7 +11,7 @@ public class CreatureDialogue : MonoBehaviour
     Button progressDialogue;
     TMP_Text dialogueBoxText;
     int clickCount = 0;
-    bool talkedOnThisDay = false;
+    public bool talkedOnThisDay = false;
 
     void Awake(){
         GameObject[] persist = new GameObject[] {creatureDialogue, Inventory.instance.fishQuota, gameObject};
