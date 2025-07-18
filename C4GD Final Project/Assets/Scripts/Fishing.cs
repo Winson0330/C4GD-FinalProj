@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fishing : MonoBehaviour
 {
+    Animator anim;
     public TMPro.TMP_Text resultText;
     public string[] FishTypes;
     public static int[] EnduranceLevels;
@@ -17,9 +18,11 @@ public class Fishing : MonoBehaviour
     public FishingMinigame minigameRef;
     public PlayerController player;
     public bool pickedFish;
+    bool fishAnim;
     public static int chosenFish;
     public GameObject fUp;
     public GameObject fDown;
+    public AudioSource catchAudio;
 
     void Start(){
         minigameRef= GameObject.FindGameObjectWithTag("FishConnect").GetComponent<FishingMinigame>();
@@ -29,6 +32,7 @@ public class Fishing : MonoBehaviour
         chosenFish = Random.Range(0, FishTypes.Length);
         fUp.GetComponent<CanvasGroup>().alpha=1;
         fDown.GetComponent<CanvasGroup>().alpha=0;
+        anim=player.GetComponent<Animator>();
     }
 
     void Update(){
@@ -46,14 +50,15 @@ public class Fishing : MonoBehaviour
             resultText.text = "";
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && inFishSpot && canFish){
+        if (Input.GetKeyDown(KeyCode.F) && inFishSpot && canFish&&!fishAnim){
             float timer=0.4f;
-            float timerLen=0.4f;
             timer-=Time.deltaTime;
 
             isFishing=true;
             minigameRef.canvase.alpha=1;
             player.moveSpeed=0;
+
+            anim.SetTrigger("startFishing"); //play fishengage
 
             if(timer>0){
                 fUp.GetComponent<CanvasGroup>().alpha=0;
@@ -61,6 +66,7 @@ public class Fishing : MonoBehaviour
             }else{
                 fDown.GetComponent<CanvasGroup>().alpha=0;
             }
+            fishAnim=true;
         }
 
         if(minigameRef.minigameCompleted){
@@ -68,19 +74,22 @@ public class Fishing : MonoBehaviour
             if(minigameRef.minigameSuccess){
                 resultText.text = "You fished a " + FishTypes[chosenFish] + "!";
                 Inventory.instance.newCatches.Add(FishTypes[chosenFish]);
+                fishAnim=false;
+                anim.SetTrigger("fishSuccess");
                 player.moveSpeed=10;
                 fUp.GetComponent<CanvasGroup>().alpha=1;
                 fDown.GetComponent<CanvasGroup>().alpha=0;
             }else if(minigameRef.minigameFailure) {
                 resultText.text = "The " + FishTypes[chosenFish] + " got away...";
+                fishAnim=false;
                 player.moveSpeed=10;
                 fUp.GetComponent<CanvasGroup>().alpha=1;
                 fDown.GetComponent<CanvasGroup>().alpha=0;
                }
-
-                minigameRef.minigameCompleted=!minigameRef.minigameCompleted;
-                minigameRef.minigameSuccess=!minigameRef.minigameSuccess;
-                minigameRef.minigameFailure=!minigameRef.minigameFailure;
+                catchAudio.Play();
+                minigameRef.minigameCompleted=false;
+                minigameRef.minigameSuccess=false;
+                minigameRef.minigameFailure=false;
                 minigameRef.canvase.alpha=0;
                 minigameRef.bar=40;
                 
